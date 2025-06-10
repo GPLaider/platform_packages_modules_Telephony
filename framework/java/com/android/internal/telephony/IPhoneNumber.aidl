@@ -13,13 +13,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.android.telephony.module.tests;
+ package com.android.internal.telephony;
 
-import org.junit.Test;
+import android.net.Uri;
+import android.telephony.ParsedPhoneNumber;
+import java.util.List;
 
-public class PhoneNumberManagerTest {
-    @Test
-    public void dummyTest() {
-    }
+/**
+ *  Interface for PhoneNumberManagerService.
+ */
+interface IPhoneNumber {
+
+  ParsedPhoneNumber parsePhoneNumber(in List<Uri> associatedUris, in String countryIso);
 }
-

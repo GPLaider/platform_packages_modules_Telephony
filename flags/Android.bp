@@ -1,4 +1,3 @@
-//
 // Copyright (C) 2025 The Android Open Source Project
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,33 +11,28 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
-//
 
 package {
     default_applicable_licenses: ["Android-Apache-2.0"],
 }
 
-android_test {
-    name: "TelephonyModuleTests",
-    team: "trendy_team_fwk_telephony",
-    platform_apis: true,
+aconfig_declarations {
+    name: "telephony_aconfig_flags",
+    package: "com.android.telephony.flags",
+    container: "com.android.telephony2",
+    srcs: ["telephony_flags.aconfig"],
+    exportable: true,
+}
+
+java_aconfig_library {
+    name: "telephony_aconfig_flags_lib",
+    aconfig_declarations: "telephony_aconfig_flags",
     min_sdk_version: "36",
-    sdk_version: "test_current",
-
-    srcs: [
-        "src/**/*.java",
+    defaults: ["framework-minus-apex-aconfig-java-defaults"],
+    apex_available: [
+        "com.android.telephony2",
     ],
-
-    static_libs: [
-        "androidx.test.runner",
-        "junit",
-        "telephony_aconfig_flags_lib",
-        "flag-junit",
-    ],
-
-    // Tag this module as an mts test artifact
-    test_suites: [
-        "general-tests",
-        "mts-telephony2",
+    visibility: [
+        "//packages/modules/Telephony:__subpackages__",
     ],
 }

@@ -13,13 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.android.telephony.module.tests;
+package android.telephony;
 
-import org.junit.Test;
-
-public class PhoneNumberManagerTest {
-    @Test
-    public void dummyTest() {
-    }
-}
-
+/**
+ * Provides ParsedPhoneNumber to IPhoneNumber Interface.
+ */
+parcelable ParsedPhoneNumber;
